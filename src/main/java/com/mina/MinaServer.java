@@ -17,7 +17,7 @@ public class MinaServer {
 	public static void main(String[] args) throws IOException {
 		IoAcceptor acceptor = new NioSocketAcceptor();
 		acceptor.getFilterChain().addLast("logger", new LoggingFilter());
-		acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "UTF-8" ))));
+		acceptor.getFilterChain().addLast("codec", new ProtocolCodecFilter( new TextLineCodecFactory( Charset.forName( "gbk" ))));
 		acceptor.setHandler(new TimeServerHandler());
 		acceptor.setDefaultLocalAddress(new InetSocketAddress(PORT));
 		acceptor.bind();

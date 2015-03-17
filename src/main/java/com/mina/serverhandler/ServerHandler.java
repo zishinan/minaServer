@@ -1,17 +1,13 @@
 package com.mina.serverhandler;
 
-import java.util.Date;
-
 import org.apache.log4j.Logger;
 import org.apache.mina.core.service.IoHandlerAdapter;
 import org.apache.mina.core.session.IoSession;
 
-import com.alibaba.fastjson.JSON;
-import com.mina.ActValue;
-import com.mina.Data;
+import com.mina.ServerManager;
 
-public class TimeServerHandler extends IoHandlerAdapter {
-	private static Logger logger = Logger.getLogger(TimeServerHandler.class);
+public class ServerHandler extends IoHandlerAdapter {
+	private static Logger logger = Logger.getLogger(ServerHandler.class);
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
 		logger.info(session.getRemoteAddress().toString());
@@ -20,13 +16,9 @@ public class TimeServerHandler extends IoHandlerAdapter {
 	@Override
 	public void messageReceived(IoSession session, Object message)
 			throws Exception {
-		String msg = message.toString().trim();
-		logger.info(msg);
-		String wmsg = "user:yangxi;password:yangxiouyang";
-		Data data = new Data(ActValue.LOGIN,wmsg);
-		String msgs = JSON.toJSONString(data);
-		logger.info(msgs);
-		session.write(msgs);
+		String result = ServerManager.getServerResult(message.toString().trim());
+		
+		session.write(result);
 	}
 	
 	@Override

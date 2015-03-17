@@ -21,7 +21,7 @@ import com.util.DBUtil;
 public class Db2Java
 {
 	private static Properties properties;
-	private static final String dbName = "btserver";
+	private static final String dbName = "schooldata";
 	private static final String packageInfo = "com.";
 	private static final String packageName = "/src/main/java/com/";
 	
@@ -72,7 +72,7 @@ public class Db2Java
 				noDate = false;
 			}
 		}
-		sb.append("import com.ouyang.common.annotation.Entry;\r\n\r\n");
+		sb.append("import com.common.annotation.Entry;\r\n\r\n");
 		sb.append("@Entry\r\n").append("public class ").append(upperFirestChar(tableName)).append("\r\n{\r\n");
 		sb.append(getFieldStr(map)).append("\r\n");
 		sb.append(getMethodStr(map)).append("\r\n}");

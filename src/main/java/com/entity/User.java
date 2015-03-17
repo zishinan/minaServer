@@ -5,38 +5,20 @@ import com.common.Entry;
 @Entry
 public class User
 {
-	private Integer id;
-	private String phone;
-	private Integer greate;
+	private Long id;
 	private String schNum;
 	private String name;
 	private Integer type;
 	private String password;
-	private Integer clazz;
+	private String clazz;
 
-	public Integer getId()
+	public Long getId()
 	{
 		return this.id;
 	}
-	public void setId(Integer id)
+	public void setId(Long id)
 	{
 		this.id=id;
-	}
-	public String getPhone()
-	{
-		return this.phone;
-	}
-	public void setPhone(String phone)
-	{
-		this.phone=phone;
-	}
-	public Integer getGreate()
-	{
-		return this.greate;
-	}
-	public void setGreate(Integer greate)
-	{
-		this.greate=greate;
 	}
 	public String getSchNum()
 	{
@@ -70,11 +52,11 @@ public class User
 	{
 		this.password=password;
 	}
-	public Integer getClazz()
+	public String getClazz()
 	{
 		return this.clazz;
 	}
-	public void setClazz(Integer clazz)
+	public void setClazz(String clazz)
 	{
 		this.clazz=clazz;
 	}

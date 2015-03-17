@@ -5,7 +5,7 @@ import com.common.Entry;
 @Entry
 public class Orderform
 {
-	private Product product;
+	private String products;
 	private Long id;
 	private String phone;
 	private String time;
@@ -14,13 +14,11 @@ public class Orderform
 	private String addr;
 	private User user;
 
-	public Product getProduct()
-	{
-		return this.product;
+	public String getProducts() {
+		return products;
 	}
-	public void setProduct(Product product)
-	{
-		this.product=product;
+	public void setProducts(String products) {
+		this.products = products;
 	}
 	public Long getId()
 	{

@@ -29,10 +29,35 @@ public class ServerManager {
 		case ActValue.SIGIN:
 			result = getSiginData(data.getMsg());
 			break;
+		case ActValue.BUY:
+			result = getBuyData(data.getMsg());
+			break;
+		case ActValue.SHOW_BUY:
+			result = getShowBuyData(data.getMsg());
+			break;
+		case ActValue.CHANGE_PWD:
+			result = getChagePwdData(data.getMsg());
+			break;
 		default:
 			break;
 		}
 		return result;
+	}
+
+	//user;product;
+	private static String getBuyData(String msg) {
+		
+		return null;
+	}
+
+	private static String getShowBuyData(String msg) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static String getChagePwdData(String msg) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	private static String getSiginData(String msg) {
@@ -42,6 +67,8 @@ public class ServerManager {
 		String result = "";
 		if(users.size() > 0){
 			result = JSON.toJSONString(new Data(ActValue.SIGIN, JSON.toJSONString(users.get(0))));
+		}else {
+			result = "没有该用户信息!";
 		}
 		return result;
 	}

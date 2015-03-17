@@ -1,13 +1,21 @@
 package com.mina;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
+import com.dao.DirDao;
 import com.dao.ProductDao;
+import com.dao.SmalldirDao;
 import com.dao.UserDao;
+import com.dao.impl.DirDaoImpl;
 import com.dao.impl.ProductDaoImpl;
+import com.dao.impl.SmalldirDaoImpl;
 import com.dao.impl.UserDaoImpl;
+import com.entity.Dir;
 import com.entity.Product;
+import com.entity.Smalldir;
 import com.entity.User;
 
 public class ServerManager {
@@ -39,10 +47,18 @@ public class ServerManager {
 	}
 
 	private static String getLoginData() {
-		ProductDao dao = new ProductDaoImpl();
-		List<Product> products = dao.listQuery(null, null, 0, 10);
+		ProductDao productDao = new ProductDaoImpl();
+		List<Product> products = productDao.listQuery(null, null, null, null);
+		DirDao dirDao = new DirDaoImpl();
+		List<Dir> dirs = dirDao.listQuery(null, null, null, null);
+		SmalldirDao smalldirDao = new SmalldirDaoImpl();
+		List<Smalldir> smalldirs = smalldirDao.listQuery(null, null, null, null);
+		Map<String, Object> maps = new HashMap<>();
+		maps.put("products", products);
+		maps.put("dir", dirs);
+		maps.put("smalldirs", smalldirs);
 		
-		String msg = JSON.toJSONString(products);
+		String msg = JSON.toJSONString(maps);
 		Data data = new Data(ActValue.LOGIN, msg);
 		return JSON.toJSONString(data);
 	}

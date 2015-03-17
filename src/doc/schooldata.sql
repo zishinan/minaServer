@@ -2,15 +2,15 @@
 Navicat MySQL Data Transfer
 
 Source Server         : local
-Source Server Version : 50173
-Source Host           : localhost:3306
+Source Server Version : 50527
+Source Host           : 127.0.0.1:3306
 Source Database       : schooldata
 
 Target Server Type    : MYSQL
-Target Server Version : 50173
+Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2015-03-16 23:55:52
+Date: 2015-03-17 22:04:51
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -31,13 +31,13 @@ CREATE TABLE `dir` (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for `order`
+-- Table structure for `orderform`
 -- ----------------------------
-DROP TABLE IF EXISTS `order`;
-CREATE TABLE `order` (
+DROP TABLE IF EXISTS `orderform`;
+CREATE TABLE `orderform` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) DEFAULT NULL,
-  `product_id` bigint(20) DEFAULT NULL,
+  `products` text,
   `price` int(11) DEFAULT NULL,
   `addr` varchar(255) DEFAULT NULL,
   `phone` varchar(255) DEFAULT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE `order` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- Records of order
+-- Records of orderform
 -- ----------------------------
 
 -- ----------------------------
@@ -58,18 +58,20 @@ CREATE TABLE `product` (
   `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `dir_id` bigint(255) DEFAULT NULL,
-  `smallDir_id` bigint(255) DEFAULT NULL,
+  `smalldir_id` bigint(255) DEFAULT NULL,
   `price` int(11) DEFAULT NULL,
   `disPrice` int(11) DEFAULT NULL,
   `url` varchar(255) DEFAULT NULL,
   `saleCount` int(11) DEFAULT NULL,
   `isDelete` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of product
 -- ----------------------------
+INSERT INTO `product` VALUES ('1', '肥皂', '1', '2', '12', '6', null, '0', '0');
+INSERT INTO `product` VALUES ('2', '香皂', '1', '2', '15', '6', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for `smalldir`

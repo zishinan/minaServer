@@ -2,6 +2,8 @@ package com.common;
 
 import java.util.List;
 
+import com.entity.User;
+
 
 public interface GenericDao<T>
 {
@@ -37,4 +39,5 @@ public interface GenericDao<T>
 	 * @return
 	 */
 	public Object query(String sql,Object[] params);
+
 }

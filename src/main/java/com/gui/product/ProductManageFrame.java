@@ -4,28 +4,33 @@
  * and open the template in the editor.
  */
 
-package com.gui;
+package com.gui.product;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-import com.team.service.TeamService;
+import com.dao.ProductDao;
+import com.dao.impl.ProductDaoImpl;
+import com.entity.Product;
+import com.gui.MenuFrame;
+import com.mysql.fabric.xmlrpc.base.Member;
 
 /**
  *
  * @author Administrator
  */
-public class TeamManageFrame extends javax.swing.JFrame {
+public class ProductManageFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form TeamManageFrame
      */
-    public TeamManageFrame() {
-    	super("队伍管理");
+    public ProductManageFrame() {
+    	super("用户管理");
         initComponents();
     }
     
-    TeamService teamService = new TeamService();
+    public ProductDao ProductDao = new ProductDaoImpl();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -47,22 +52,41 @@ public class TeamManageFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-        	String[] names = teamService.getNames();
+        	public String[] getNames(){
+        		List<Product> Products = ProductDao.listQuery(null, null, null, null);
+        		String[] names = new String[Products.size()+1];
+        		int i = 1;
+        		for (Product Product : Products) {
+					names[i] = Product.getSchNum();
+				}
+        		return names;
+        	}
+        	String[] names = getNames();
             public int getSize() { return names.length; }
             public Object getElementAt(int i) { return names[i]; }
         });
-        jList1.setSelectedIndex(0);
+        jList1.setSelectedIndex(1);
         jScrollPane2.setViewportView(jList1);
 
-        jButton1.setText("添加队伍"); 
+        jButton1.setText("添加用户"); 
 
-        jButton2.setText("删除队伍");
+        jButton2.setText("删除用户");
 
-        jButton3.setText("队伍详情");
+        jButton3.setText("用户详情");
 
-        jButton4.setText("修改队伍");
+        jButton4.setText("修改用户");
 
         jButton5.setText("返回菜单");
+        
+        
+        jButton3.addActionListener(new ActionListener()
+		{
+			
+			public void actionPerformed(ActionEvent e)
+			{
+				view();
+			}
+		});
         
         jButton4.addActionListener(new ActionListener()
 		{
@@ -79,15 +103,6 @@ public class TeamManageFrame extends javax.swing.JFrame {
 			public void actionPerformed(ActionEvent e)
 			{
 				delete();
-			}
-		});
-        
-        jButton3.addActionListener(new ActionListener()
-		{
-			
-			public void actionPerformed(ActionEvent e)
-			{
-				view();
 			}
 		});
         
@@ -152,37 +167,39 @@ public class TeamManageFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    protected void update()
+    protected void view()
 	{
     	String name = (String) jList1.getSelectedValue();
 		this.dispose();
-		EditTeam.team = teamService.get(name);
-		new EditTeam();
+		List<Product> Products = ProductDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
+		ViewMember.Product = Products.get(0);
+		new ViewMember();
+	}
+
+
+	protected void update()
+	{
+    	String name = (String) jList1.getSelectedValue();
+		this.dispose();
+		EditMember.Product = ProductDao.getProductBySchnum(name);
+		new EditMember();
 	}
 
 
 	protected void delete()
 	{
-    	String name = (String) jList1.getSelectedValue();
-		teamService.remove(name);
+		String name = (String) jList1.getSelectedValue();
+		ProductDao.remove(name);
 		this.dispose();
-		new TeamManageFrame();
-	}
-
-
-	protected void view()
-	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		ViewTeam.team = teamService.get(name);
-		new ViewTeam();
+		new MemberManageFrame();
 	}
 
 
 	protected void add()
 	{
 		this.dispose();
-		new EditTeam();
+		EditMember.Product = new Product();
+		new EditMember();
 	}
 
 	protected void back()

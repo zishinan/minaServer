@@ -4,30 +4,32 @@
  * and open the template in the editor.
  */
 
-package com.gui;
+package com.gui.user;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
-import com.team.entry.Member;
-import com.team.service.MemberService;
-import com.team.service.TeamService;
+import com.dao.UserDao;
+import com.dao.impl.UserDaoImpl;
+import com.entity.User;
+import com.gui.MenuFrame;
 
 /**
  *
  * @author Administrator
  */
-public class MemberManageFrame extends javax.swing.JFrame {
+public class UserManageFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form TeamManageFrame
      */
-    public MemberManageFrame() {
-    	super("队员管理");
+    public UserManageFrame() {
+    	super("用户管理");
         initComponents();
     }
     
-    MemberService memberService = new MemberService();
+    public UserDao userDao = new UserDaoImpl();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -49,20 +51,29 @@ public class MemberManageFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jList1.setModel(new javax.swing.AbstractListModel() {
-        	String[] names = memberService.getNames();
+        	public String[] getNames(){
+        		List<User> users = userDao.listQuery(null, null, null, null);
+        		String[] names = new String[users.size()+1];
+        		int i = 1;
+        		for (User user : users) {
+					names[i] = user.getSchNum();
+				}
+        		return names;
+        	}
+        	String[] names = getNames();
             public int getSize() { return names.length; }
             public Object getElementAt(int i) { return names[i]; }
         });
-        jList1.setSelectedIndex(0);
+        jList1.setSelectedIndex(1);
         jScrollPane2.setViewportView(jList1);
 
-        jButton1.setText("添加队员"); 
+        jButton1.setText("添加用户"); 
 
-        jButton2.setText("删除队员");
+        jButton2.setText("删除用户");
 
-        jButton3.setText("队员详情");
+        jButton3.setText("用户详情");
 
-        jButton4.setText("修改队员");
+        jButton4.setText("修改用户");
 
         jButton5.setText("返回菜单");
         
@@ -159,8 +170,9 @@ public class MemberManageFrame extends javax.swing.JFrame {
 	{
     	String name = (String) jList1.getSelectedValue();
 		this.dispose();
-		ViewMember.member = memberService.get(name);
-		new ViewMember();
+		List<User> users = userDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
+		ViewUser.user = users.get(0);
+		new ViewUser();
 	}
 
 
@@ -168,25 +180,25 @@ public class MemberManageFrame extends javax.swing.JFrame {
 	{
     	String name = (String) jList1.getSelectedValue();
 		this.dispose();
-		EditMember.member = memberService.get(name);
-		new EditMember();
+		EditUser.user = userDao.getUserBySchnum(name);
+		new EditUser();
 	}
 
 
 	protected void delete()
 	{
 		String name = (String) jList1.getSelectedValue();
-		memberService.remove(name);
+		userDao.remove(name);
 		this.dispose();
-		new MemberManageFrame();
+		new UserManageFrame();
 	}
 
 
 	protected void add()
 	{
 		this.dispose();
-		EditMember.member = new Member();
-		new EditMember();
+		EditUser.user = new User();
+		new EditUser();
 	}
 
 	protected void back()

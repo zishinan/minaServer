@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 
-package com.gui;
+package com.gui.secondtype;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import com.entity.User;
+import com.entity.SecondType;
 import com.team.entry.Member;
 import com.team.entry.Team;
 import com.team.service.MemberService;
@@ -22,13 +22,13 @@ import com.team.util.StringUtil;
  *
  * @author Administrator
  */
-public class EditMember extends javax.swing.JFrame {
+public class EditSecondType extends javax.swing.JFrame {
 
-    public static User member = new User();
+    public static SecondType SecondType = new SecondType();
 	/**
      * Creates new form EditMember
      */
-    public EditMember() {
+    public EditSecondType() {
     	super("队员");
         initComponents();
     }

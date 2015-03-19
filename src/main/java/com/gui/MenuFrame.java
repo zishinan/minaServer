@@ -9,6 +9,11 @@ package com.gui;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import com.gui.firsttype.FirstTypeManageFrame;
+import com.gui.product.ProductManageFrame;
+import com.gui.secondtype.SecondTypeManageFrame;
+import com.gui.user.UserManageFrame;
+
 /**
  *
  * @author Administrator
@@ -23,20 +28,25 @@ public class MenuFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    private void manageTeam()
+    private void manageUser()
     {
     	this.dispose();
-    	new TeamManageFrame();
+    	new UserManageFrame();
     }
-    private void changeUser()
+    private void manageFirstType()
     {
     	this.dispose();
-    	new EditUserFrame();
+    	new FirstTypeManageFrame();
     }
-    private void manageMember()
+    private void manageSecondType()
     {
     	this.dispose();
-    	new MemberManageFrame();
+    	new SecondTypeManageFrame();
+    }
+    private void manageProduct()
+    {
+    	this.dispose();
+    	new ProductManageFrame();
     }
 
     /**
@@ -52,24 +62,29 @@ public class MenuFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        ctrlButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("菜单");
 
-        jButton1.setText("队伍管理");
+        jButton1.setText("用户管理");
 
-        jButton2.setText("修改账户");
+        jButton2.setText("大类管理");
 
-        jButton3.setText("队员管理");
+        jButton3.setText("小类管理");
+        
+        jButton4.setText("商品管理");
         
         jButton1.addActionListener(new ActionListener()
 		{
 			
 			public void actionPerformed(ActionEvent arg0)
 			{
-				manageTeam();
+				manageUser();
 			}
+
 		});
         
         jButton2.addActionListener(new ActionListener()
@@ -77,7 +92,7 @@ public class MenuFrame extends javax.swing.JFrame {
         	
         	public void actionPerformed(ActionEvent arg0)
         	{
-        		changeUser();
+        		manageFirstType();
         	}
         });
         
@@ -86,7 +101,16 @@ public class MenuFrame extends javax.swing.JFrame {
         	
         	public void actionPerformed(ActionEvent arg0)
         	{
-        		manageMember();
+        		manageSecondType();
+        	}
+        });
+        
+        jButton4.addActionListener(new ActionListener()
+        {
+        	
+        	public void actionPerformed(ActionEvent arg0)
+        	{
+        		manageProduct();
         	}
         });
 
@@ -102,9 +126,11 @@ public class MenuFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(147, 147, 147)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton2)
                             .addComponent(jButton1)
-                            .addComponent(jButton3))))
+                            .addComponent(jButton2)
+                            .addComponent(jButton3)
+                            .addComponent(jButton4)
+                            )))
                 .addContainerGap(172, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -112,12 +138,14 @@ public class MenuFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jButton1)
-                .addGap(27, 27, 27)
-                .addComponent(jButton3)
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addComponent(jButton2)
+                .addGap(20, 20, 20)
+                .addComponent(jButton3)
+                .addGap(20, 20, 20)
+                .addComponent(jButton4)
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
@@ -132,6 +160,9 @@ public class MenuFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton ctrlButton;
+    
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

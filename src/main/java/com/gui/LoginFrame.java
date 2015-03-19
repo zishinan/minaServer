@@ -3,13 +3,14 @@ package com.gui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
-import com.team.entry.User;
-import com.team.service.UserService;
-import com.team.util.MD5Util;
-import com.team.util.StringUtil;
+import com.dao.UserDao;
+import com.dao.impl.UserDaoImpl;
+import com.entity.User;
+import com.util.StringUtil;
 
 /**
  *
@@ -45,9 +46,9 @@ public class LoginFrame extends javax.swing.JFrame {
 
         jLabel1.setText("登陆界面");
 
-        jLabel2.setText("用户名：");
+        jLabel2.setText("学号：");
 
-        jLabel3.setText("密  码：");
+        jLabel3.setText("密码：");
 
         jButton1.addActionListener(new ActionListener()
 		{
@@ -108,7 +109,7 @@ public class LoginFrame extends javax.swing.JFrame {
     	
     	if(StringUtil.isBlank(username))
     	{
-    		JOptionPane.showMessageDialog(this, "用户名不能为空！", "错误提示", JOptionPane.ERROR_MESSAGE);
+    		JOptionPane.showMessageDialog(this, "学号不能为空！", "错误提示", JOptionPane.ERROR_MESSAGE);
     		return;
     	}
     	
@@ -118,19 +119,16 @@ public class LoginFrame extends javax.swing.JFrame {
     		return;
     	}
     	
-    	UserService userService = new UserService();
-    	User user = userService.getUser();
+    	UserDao userDao = new UserDaoImpl();
+    	User user = userDao.getUserBySchnumAndPassword(username, password);
     	
-    	if(username.equals(user.getUsername()) && user.getPassword().equals(MD5Util.md5(password)))
-    	{
-    		this.dispose();
-    		new MenuFrame();
-    		return;
+    	if (user == null) {
+    		JOptionPane.showMessageDialog(this, "学号或密码不正确！", "错误提示", JOptionPane.ERROR_MESSAGE);
+    		// TODO 暂时去掉验证
+//    		return;
     	}
-    	else
-    	{
-    		JOptionPane.showMessageDialog(this, "用户名或密码不正确！", "错误提示", JOptionPane.ERROR_MESSAGE);
-    	}
+    	this.dispose();
+    	new MenuFrame();
     	
     }
     

@@ -4,23 +4,24 @@
  * and open the template in the editor.
  */
 
-package com.gui;
+package com.gui.firsttype;
 
-import com.team.entry.Member;
+import com.entity.User;
+import com.team.entry.FirstType;
 import com.team.entry.Team;
 
 /**
  *
  * @author Administrator
  */
-public class ViewMember extends javax.swing.JFrame {
+public class ViewFirstType extends javax.swing.JFrame {
 	
-	public static Member member = new Member();
+	public static User user = new User();
 
     /**
-     * Creates new form EditMember
+     * Creates new form EditFirstType
      */
-    public ViewMember() {
+    public ViewFirstType() {
     	super("队员信息");
         initComponents();
     }
@@ -48,18 +49,18 @@ public class ViewMember extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         
-        jLabel7.setText(member.getName());
-        int intSex = member.getSex();
+        jLabel7.setText(FirstType.getName());
+        int intSex = FirstType.getSex();
         String sex = "男";
         if(intSex == 0)
         {
         	sex = "女";
         }
         jLabel8.setText(sex);
-        jLabel9.setText(member.getAge()+"");
-        jLabel10.setText(member.getPhone());
-        jLabel11.setText(member.getEmail());
-        Team team = member.getTeam();
+        jLabel9.setText(FirstType.getAge()+"");
+        jLabel10.setText(FirstType.getPhone());
+        jLabel11.setText(FirstType.getEmail());
+        Team team = FirstType.getTeam();
         if(null == team)
         {
         	jLabel12.setText("未分组");
@@ -168,7 +169,7 @@ public class ViewMember extends javax.swing.JFrame {
     protected void back()
 	{
     	this.dispose();
-		new MemberManageFrame();
+		new FirstTypeManageFrame();
 	}
 
 

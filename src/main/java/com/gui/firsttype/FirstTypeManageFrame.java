@@ -8,13 +8,8 @@ package com.gui.firsttype;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.List;
 
-import com.dao.FirstTypeDao;
-import com.dao.impl.FirstTypeDaoImpl;
-import com.entity.FirstType;
 import com.gui.MenuFrame;
-import com.mysql.fabric.xmlrpc.base.Member;
 
 /**
  *
@@ -30,7 +25,7 @@ public class FirstTypeManageFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public FirstTypeDao FirstTypeDao = new FirstTypeDaoImpl();
+//    public FirstTypeDao FirstTypeDao = new FirstTypeDaoImpl();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,20 +46,20 @@ public class FirstTypeManageFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-        	public String[] getNames(){
-        		List<FirstType> FirstTypes = FirstTypeDao.listQuery(null, null, null, null);
-        		String[] names = new String[FirstTypes.size()+1];
-        		int i = 1;
-        		for (FirstType FirstType : FirstTypes) {
-					names[i] = FirstType.getSchNum();
-				}
-        		return names;
-        	}
-        	String[] names = getNames();
-            public int getSize() { return names.length; }
-            public Object getElementAt(int i) { return names[i]; }
-        });
+//        jList1.setModel(new javax.swing.AbstractListModel() {
+//        	public String[] getNames(){
+//        		List<FirstType> FirstTypes = FirstTypeDao.listQuery(null, null, null, null);
+//        		String[] names = new String[FirstTypes.size()+1];
+//        		int i = 1;
+//        		for (FirstType FirstType : FirstTypes) {
+//					names[i] = FirstType.getSchNum();
+//				}
+//        		return names;
+//        	}
+//        	String[] names = getNames();
+//            public int getSize() { return names.length; }
+//            public Object getElementAt(int i) { return names[i]; }
+//        });
         jList1.setSelectedIndex(1);
         jScrollPane2.setViewportView(jList1);
 
@@ -169,37 +164,37 @@ public class FirstTypeManageFrame extends javax.swing.JFrame {
 
     protected void view()
 	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		List<FirstType> FirstTypes = FirstTypeDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
-		ViewMember.FirstType = FirstTypes.get(0);
-		new ViewMember();
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		List<FirstType> FirstTypes = FirstTypeDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
+//		ViewMember.FirstType = FirstTypes.get(0);
+//		new ViewMember();
 	}
 
 
 	protected void update()
 	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		EditMember.FirstType = FirstTypeDao.getFirstTypeBySchnum(name);
-		new EditMember();
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		EditMember.FirstType = FirstTypeDao.getFirstTypeBySchnum(name);
+//		new EditMember();
 	}
 
 
 	protected void delete()
 	{
-		String name = (String) jList1.getSelectedValue();
-		FirstTypeDao.remove(name);
-		this.dispose();
-		new MemberManageFrame();
+//		String name = (String) jList1.getSelectedValue();
+//		FirstTypeDao.remove(name);
+//		this.dispose();
+//		new MemberManageFrame();
 	}
 
 
 	protected void add()
 	{
-		this.dispose();
-		EditMember.FirstType = new FirstType();
-		new EditMember();
+//		this.dispose();
+//		EditMember.FirstType = new FirstType();
+//		new EditMember();
 	}
 
 	protected void back()

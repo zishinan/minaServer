@@ -7,8 +7,6 @@
 package com.gui.product;
 
 import com.entity.User;
-import com.team.entry.Product;
-import com.team.entry.Team;
 
 /**
  *
@@ -49,26 +47,26 @@ public class ViewProduct extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         
-        jLabel7.setText(Product.getName());
-        int intSex = Product.getSex();
-        String sex = "男";
-        if(intSex == 0)
-        {
-        	sex = "女";
-        }
-        jLabel8.setText(sex);
-        jLabel9.setText(Product.getAge()+"");
-        jLabel10.setText(Product.getPhone());
-        jLabel11.setText(Product.getEmail());
-        Team team = Product.getTeam();
-        if(null == team)
-        {
-        	jLabel12.setText("未分组");
-        }
-        else
-        {
-        	jLabel12.setText(team.getName());
-        }
+//        jLabel7.setText(Product.getName());
+//        int intSex = Product.getSex();
+//        String sex = "男";
+//        if(intSex == 0)
+//        {
+//        	sex = "女";
+//        }
+//        jLabel8.setText(sex);
+//        jLabel9.setText(Product.getAge()+"");
+//        jLabel10.setText(Product.getPhone());
+//        jLabel11.setText(Product.getEmail());
+//        Team team = Product.getTeam();
+//        if(null == team)
+//        {
+//        	jLabel12.setText("未分组");
+//        }
+//        else
+//        {
+//        	jLabel12.setText(team.getName());
+//        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

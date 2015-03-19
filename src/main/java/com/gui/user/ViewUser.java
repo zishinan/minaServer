@@ -7,8 +7,6 @@
 package com.gui.user;
 
 import com.entity.User;
-import com.team.entry.User;
-import com.team.entry.Team;
 
 /**
  *
@@ -49,26 +47,26 @@ public class ViewUser extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         
-        jLabel7.setText(User.getName());
-        int intSex = User.getSex();
-        String sex = "男";
-        if(intSex == 0)
-        {
-        	sex = "女";
-        }
-        jLabel8.setText(sex);
-        jLabel9.setText(User.getAge()+"");
-        jLabel10.setText(User.getPhone());
-        jLabel11.setText(User.getEmail());
-        Team team = User.getTeam();
-        if(null == team)
-        {
-        	jLabel12.setText("未分组");
-        }
-        else
-        {
-        	jLabel12.setText(team.getName());
-        }
+//        jLabel7.setText(User.getName());
+//        int intSex = User.getSex();
+//        String sex = "男";
+//        if(intSex == 0)
+//        {
+//        	sex = "女";
+//        }
+//        jLabel8.setText(sex);
+//        jLabel9.setText(User.getAge()+"");
+//        jLabel10.setText(User.getPhone());
+//        jLabel11.setText(User.getEmail());
+//        Team team = User.getTeam();
+//        if(null == team)
+//        {
+//        	jLabel12.setText("未分组");
+//        }
+//        else
+//        {
+//        	jLabel12.setText(team.getName());
+//        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

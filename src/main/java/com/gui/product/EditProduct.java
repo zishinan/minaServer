@@ -9,14 +9,7 @@ package com.gui.product;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-
 import com.entity.Product;
-import com.team.entry.Member;
-import com.team.entry.Team;
-import com.team.service.MemberService;
-import com.team.service.TeamService;
-import com.team.util.StringUtil;
 
 /**
  *
@@ -82,34 +75,34 @@ public class EditProduct extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "男", "女" }));
         
-        TeamService teamService = new TeamService();
-        String[] teams = teamService.getNames();
+//        TeamService teamService = new TeamService();
+//        String[] teams = teamService.getNames();
         
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(teams));
+//        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(teams));
 
         jButton1.setText("确定");
 
         jButton2.setText("取消");
         
-        if(StringUtil.isNotBlank(member.getName()))
-        {
-        	jTextField1.setText(member.getName());
-        	
-        	jComboBox1.setSelectedItem(getSex(member.getSex()));
-        	
-        	jTextField3.setText(member.getAge()+"");
-        	jTextField4.setText(member.getPhone());
-        	jTextField5.setText(member.getEmail());
-        	Team team = EditMember.member.getTeam();
-        	if(null == team)
-        	{
-        		jComboBox2.setSelectedItem("未分组");
-        	}
-        	else
-        	{
-        		jComboBox2.setSelectedItem(team.getName());
-        	}
-        }
+//        if(StringUtil.isNotBlank(member.getName()))
+//        {
+//        	jTextField1.setText(member.getName());
+//        	
+//        	jComboBox1.setSelectedItem(getSex(member.getSex()));
+//        	
+//        	jTextField3.setText(member.getAge()+"");
+//        	jTextField4.setText(member.getPhone());
+//        	jTextField5.setText(member.getEmail());
+//        	Team team = EditMember.member.getTeam();
+//        	if(null == team)
+//        	{
+//        		jComboBox2.setSelectedItem("未分组");
+//        	}
+//        	else
+//        	{
+//        		jComboBox2.setSelectedItem(team.getName());
+//        	}
+//        }
 
         
         jButton1.addActionListener(new ActionListener()
@@ -117,7 +110,7 @@ public class EditProduct extends javax.swing.JFrame {
 			
 			public void actionPerformed(ActionEvent arg0)
 			{
-				commit();
+//				commit();
 			}
 		});
         
@@ -208,75 +201,75 @@ public class EditProduct extends javax.swing.JFrame {
         setVisible(true);
     }// </editor-fold>//GEN-END:initComponents
 
-    protected void commit()
-	{
-    	String name = jTextField1.getText().trim();
-    	String sex = (String) jComboBox1.getSelectedItem();
-    	String age = jTextField3.getText().trim();
-    	String phone = jTextField4.getText().trim();
-    	String email = jTextField5.getText().trim();
-    	
-    	if(StringUtil.isBlank(name) || StringUtil.isBlank(age) || StringUtil.isBlank(phone) || StringUtil.isBlank(email))
-    	{
-    		JOptionPane.showMessageDialog(this, "请将信息填完整！", "错误提示", JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	int intAge = StringUtil.String2Int(age);
-    	if(StringUtil.ageIsOutOfSize(intAge))
-    	{
-    		JOptionPane.showMessageDialog(this, "年龄超出范围！", "错误提示", JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	int intSex = 0;
-    	if("男".equals(sex))
-    	{
-    		intSex = 1;
-    	}
-    	if(!StringUtil.isEmail(email))
-    	{
-    		JOptionPane.showMessageDialog(this, "请输入正确的邮箱!", "错误提示", JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	if(!StringUtil.isMobileNO(phone))
-    	{
-    		JOptionPane.showMessageDialog(this, "请输入正确的手机号!", "错误提示", JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	if(nameIsExist(name) && StringUtil.isBlank(EditMember.member.getName()))
-    	{
-    		JOptionPane.showMessageDialog(this, "队员名字存在重复，请取一个别名!", "错误提示", JOptionPane.ERROR_MESSAGE);
-    		return;
-    	}
-    	
-    	Member member = new Member();
-    	member.setAge(intAge);
-    	member.setName(name);
-    	member.setEmail(email);
-    	member.setPhone(phone);
-    	member.setSex(intSex);
-    	
-    	TeamService teamService = new TeamService();
-    	Team team = teamService.get((String)jComboBox2.getSelectedItem());
-    	member.setTeam(team);
-    	
-    	MemberService memberService = new MemberService();
-    	
-    	if(StringUtil.isNotBlank(EditMember.member.getName()))
-    	{
-    		memberService.update(EditMember.member.getId(),member);
-    		JOptionPane.showMessageDialog(this, "修改队员成功!", "成功", JOptionPane.INFORMATION_MESSAGE);
-    		this.dispose();
-    		new MemberManageFrame();
-    	}
-    	else
-    	{
-    		memberService.add(member);
-    		JOptionPane.showMessageDialog(this, "添加队员成功!", "成功", JOptionPane.INFORMATION_MESSAGE);
-    		this.dispose();
-    		new MemberManageFrame();
-    	}
-    	
-	}
+//    protected void commit()
+//	{
+//    	String name = jTextField1.getText().trim();
+//    	String sex = (String) jComboBox1.getSelectedItem();
+//    	String age = jTextField3.getText().trim();
+//    	String phone = jTextField4.getText().trim();
+//    	String email = jTextField5.getText().trim();
+//    	
+//    	if(StringUtil.isBlank(name) || StringUtil.isBlank(age) || StringUtil.isBlank(phone) || StringUtil.isBlank(email))
+//    	{
+//    		JOptionPane.showMessageDialog(this, "请将信息填完整！", "错误提示", JOptionPane.ERROR_MESSAGE);
+//    		return;
+//    	}
+//    	int intAge = StringUtil.String2Int(age);
+//    	if(StringUtil.ageIsOutOfSize(intAge))
+//    	{
+//    		JOptionPane.showMessageDialog(this, "年龄超出范围！", "错误提示", JOptionPane.ERROR_MESSAGE);
+//    		return;
+//    	}
+//    	int intSex = 0;
+//    	if("男".equals(sex))
+//    	{
+//    		intSex = 1;
+//    	}
+//    	if(!StringUtil.isEmail(email))
+//    	{
+//    		JOptionPane.showMessageDialog(this, "请输入正确的邮箱!", "错误提示", JOptionPane.ERROR_MESSAGE);
+//    		return;
+//    	}
+//    	if(!StringUtil.isMobileNO(phone))
+//    	{
+//    		JOptionPane.showMessageDialog(this, "请输入正确的手机号!", "错误提示", JOptionPane.ERROR_MESSAGE);
+//    		return;
+//    	}
+//    	if(nameIsExist(name) && StringUtil.isBlank(EditMember.member.getName()))
+//    	{
+//    		JOptionPane.showMessageDialog(this, "队员名字存在重复，请取一个别名!", "错误提示", JOptionPane.ERROR_MESSAGE);
+//    		return;
+//    	}
+//    	
+//    	Member member = new Member();
+//    	member.setAge(intAge);
+//    	member.setName(name);
+//    	member.setEmail(email);
+//    	member.setPhone(phone);
+//    	member.setSex(intSex);
+//    	
+//    	TeamService teamService = new TeamService();
+//    	Team team = teamService.get((String)jComboBox2.getSelectedItem());
+//    	member.setTeam(team);
+//    	
+//    	MemberService memberService = new MemberService();
+//    	
+//    	if(StringUtil.isNotBlank(EditMember.member.getName()))
+//    	{
+//    		memberService.update(EditMember.member.getId(),member);
+//    		JOptionPane.showMessageDialog(this, "修改队员成功!", "成功", JOptionPane.INFORMATION_MESSAGE);
+//    		this.dispose();
+//    		new MemberManageFrame();
+//    	}
+//    	else
+//    	{
+//    		memberService.add(member);
+//    		JOptionPane.showMessageDialog(this, "添加队员成功!", "成功", JOptionPane.INFORMATION_MESSAGE);
+//    		this.dispose();
+//    		new MemberManageFrame();
+//    	}
+//    	
+//	}
     
     /**
      * 名字存在返回true
@@ -285,22 +278,22 @@ public class EditProduct extends javax.swing.JFrame {
      */
     private boolean nameIsExist(String name)
     {
-    	MemberService memberService = new MemberService();
-    	String[] names = memberService.getNames();
-    	for (String string : names)
-		{
-			if(string.equals(name))
-			{
-				return true;
-			}
-		}
+//    	MemberService memberService = new MemberService();
+//    	String[] names = memberService.getNames();
+//    	for (String string : names)
+//		{
+//			if(string.equals(name))
+//			{
+//				return true;
+//			}
+//		}
     	return false;
     }
 
 	protected void back()
 	{
 		this.dispose();
-		new MemberManageFrame();
+//		new MemberManageFrame();
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

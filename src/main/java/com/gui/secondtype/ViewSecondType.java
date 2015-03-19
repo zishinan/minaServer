@@ -7,8 +7,6 @@
 package com.gui.secondtype;
 
 import com.entity.User;
-import com.team.entry.SecondType;
-import com.team.entry.Team;
 
 /**
  *
@@ -49,26 +47,26 @@ public class ViewSecondType extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         
-        jLabel7.setText(SecondType.getName());
-        int intSex = SecondType.getSex();
-        String sex = "男";
-        if(intSex == 0)
-        {
-        	sex = "女";
-        }
-        jLabel8.setText(sex);
-        jLabel9.setText(SecondType.getAge()+"");
-        jLabel10.setText(SecondType.getPhone());
-        jLabel11.setText(SecondType.getEmail());
-        Team team = SecondType.getTeam();
-        if(null == team)
-        {
-        	jLabel12.setText("未分组");
-        }
-        else
-        {
-        	jLabel12.setText(team.getName());
-        }
+//        jLabel7.setText(SecondType.getName());
+//        int intSex = SecondType.getSex();
+//        String sex = "男";
+//        if(intSex == 0)
+//        {
+//        	sex = "女";
+//        }
+//        jLabel8.setText(sex);
+//        jLabel9.setText(SecondType.getAge()+"");
+//        jLabel10.setText(SecondType.getPhone());
+//        jLabel11.setText(SecondType.getEmail());
+//        Team team = SecondType.getTeam();
+//        if(null == team)
+//        {
+//        	jLabel12.setText("未分组");
+//        }
+//        else
+//        {
+//        	jLabel12.setText(team.getName());
+//        }
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 

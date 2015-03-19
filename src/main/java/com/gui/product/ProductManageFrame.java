@@ -57,7 +57,7 @@ public class ProductManageFrame extends javax.swing.JFrame {
         		String[] names = new String[Products.size()+1];
         		int i = 1;
         		for (Product Product : Products) {
-					names[i] = Product.getSchNum();
+//					names[i] = Product.getSchNum();
 				}
         		return names;
         	}
@@ -169,37 +169,37 @@ public class ProductManageFrame extends javax.swing.JFrame {
 
     protected void view()
 	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		List<Product> Products = ProductDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
-		ViewMember.Product = Products.get(0);
-		new ViewMember();
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		List<Product> Products = ProductDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
+//		ViewMember.Product = Products.get(0);
+//		new ViewMember();
 	}
 
 
 	protected void update()
 	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		EditMember.Product = ProductDao.getProductBySchnum(name);
-		new EditMember();
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		EditMember.Product = ProductDao.getProductBySchnum(name);
+//		new EditMember();
 	}
 
 
 	protected void delete()
 	{
-		String name = (String) jList1.getSelectedValue();
-		ProductDao.remove(name);
-		this.dispose();
-		new MemberManageFrame();
+//		String name = (String) jList1.getSelectedValue();
+//		ProductDao.remove(name);
+//		this.dispose();
+//		new MemberManageFrame();
 	}
 
 
 	protected void add()
 	{
-		this.dispose();
-		EditMember.Product = new Product();
-		new EditMember();
+//		this.dispose();
+//		EditMember.Product = new Product();
+//		new EditMember();
 	}
 
 	protected void back()

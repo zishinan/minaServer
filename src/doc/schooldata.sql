@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50527
 File Encoding         : 65001
 
-Date: 2015-03-17 22:04:51
+Date: 2015-03-19 21:53:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -100,14 +100,18 @@ CREATE TABLE `user` (
   `type` int(11) DEFAULT NULL COMMENT '1:学生;2:老师;3:管理员',
   `password` varchar(255) DEFAULT NULL,
   `clazz` varchar(255) DEFAULT NULL,
+  `sex` int(11) DEFAULT NULL,
+  `age` int(11) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '王五', '2011211090', '1', '2011211090', '11地信2班');
-INSERT INTO `user` VALUES ('2', '张三丰', '2011211380', '1', '2011211380', '11新闻1班');
-INSERT INTO `user` VALUES ('3', '大侠', '2012211190', '1', '2012211190', '计科1班');
-INSERT INTO `user` VALUES ('4', '李武', '2011211012', '1', '2011211012', '机电1班');
-INSERT INTO `user` VALUES ('5', 'admin', '0000000000', '3', '0000000000', '管理员');
+INSERT INTO `user` VALUES ('1', '王五', '2011211090', '1', '2011211090', '11地信2班', '1', null, null, null);
+INSERT INTO `user` VALUES ('2', '张三丰', '2011211380', '1', '2011211380', '11新闻1班', '1', null, null, null);
+INSERT INTO `user` VALUES ('3', '大侠', '2012211190', '1', '2012211190', '计科1班', '1', null, null, null);
+INSERT INTO `user` VALUES ('4', '李武', '2011211012', '1', '2011211012', '机电1班', '1', null, null, null);
+INSERT INTO `user` VALUES ('5', 'admin', '0000000000', '3', '0000000000', '管理员', '0', null, null, null);

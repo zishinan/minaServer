@@ -10,11 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-import com.dao.SecondTypeDao;
-import com.dao.impl.SecondTypeDaoImpl;
-import com.entity.SecondType;
 import com.gui.MenuFrame;
-import com.mysql.fabric.xmlrpc.base.Member;
 
 /**
  *
@@ -30,7 +26,7 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
         initComponents();
     }
     
-    public SecondTypeDao SecondTypeDao = new SecondTypeDaoImpl();
+//    public SecondTypeDao SecondTypeDao = new SecondTypeDaoImpl();
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,20 +47,20 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jList1.setModel(new javax.swing.AbstractListModel() {
-        	public String[] getNames(){
-        		List<SecondType> SecondTypes = SecondTypeDao.listQuery(null, null, null, null);
-        		String[] names = new String[SecondTypes.size()+1];
-        		int i = 1;
-        		for (SecondType SecondType : SecondTypes) {
-					names[i] = SecondType.getSchNum();
-				}
-        		return names;
-        	}
-        	String[] names = getNames();
-            public int getSize() { return names.length; }
-            public Object getElementAt(int i) { return names[i]; }
-        });
+//        jList1.setModel(new javax.swing.AbstractListModel() {
+//        	public String[] getNames(){
+//        		List<SecondType> SecondTypes = SecondTypeDao.listQuery(null, null, null, null);
+//        		String[] names = new String[SecondTypes.size()+1];
+//        		int i = 1;
+//        		for (SecondType SecondType : SecondTypes) {
+//					names[i] = SecondType.getSchNum();
+//				}
+//        		return names;
+//        	}
+//        	String[] names = getNames();
+//            public int getSize() { return names.length; }
+//            public Object getElementAt(int i) { return names[i]; }
+//        });
         jList1.setSelectedIndex(1);
         jScrollPane2.setViewportView(jList1);
 
@@ -84,7 +80,7 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
 			
 			public void actionPerformed(ActionEvent e)
 			{
-				view();
+//				view();
 			}
 		});
         
@@ -93,7 +89,7 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
 			
 			public void actionPerformed(ActionEvent e)
 			{
-				update();
+//				update();
 			}
 		});
         
@@ -102,7 +98,7 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
 			
 			public void actionPerformed(ActionEvent e)
 			{
-				delete();
+//				delete();
 			}
 		});
         
@@ -111,7 +107,7 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
 			
 			public void actionPerformed(ActionEvent arg0)
 			{
-				add();
+//				add();
 			}
 		});
         
@@ -167,40 +163,40 @@ public class SecondTypeManageFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
 
-    protected void view()
-	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		List<SecondType> SecondTypes = SecondTypeDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
-		ViewMember.SecondType = SecondTypes.get(0);
-		new ViewMember();
-	}
-
-
-	protected void update()
-	{
-    	String name = (String) jList1.getSelectedValue();
-		this.dispose();
-		EditMember.SecondType = SecondTypeDao.getSecondTypeBySchnum(name);
-		new EditMember();
-	}
-
-
-	protected void delete()
-	{
-		String name = (String) jList1.getSelectedValue();
-		SecondTypeDao.remove(name);
-		this.dispose();
-		new MemberManageFrame();
-	}
-
-
-	protected void add()
-	{
-		this.dispose();
-		EditMember.SecondType = new SecondType();
-		new EditMember();
-	}
+//    protected void view()
+//	{
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		List<SecondType> SecondTypes = SecondTypeDao.listQuery(" schNum = ? ", new Object[]{name}, null, null);
+//		ViewMember.SecondType = SecondTypes.get(0);
+//		new ViewMember();
+//	}
+//
+//
+//	protected void update()
+//	{
+//    	String name = (String) jList1.getSelectedValue();
+//		this.dispose();
+//		EditMember.SecondType = SecondTypeDao.getSecondTypeBySchnum(name);
+//		new EditMember();
+//	}
+//
+//
+//	protected void delete()
+//	{
+//		String name = (String) jList1.getSelectedValue();
+//		SecondTypeDao.remove(name);
+//		this.dispose();
+//		new MemberManageFrame();
+//	}
+//
+//
+//	protected void add()
+//	{
+//		this.dispose();
+//		EditMember.SecondType = new SecondType();
+//		new EditMember();
+//	}
 
 	protected void back()
 	{

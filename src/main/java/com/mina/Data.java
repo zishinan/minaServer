@@ -4,6 +4,9 @@ package com.mina;
 public class Data {
 	private String act;
 	private String msg;
+	public Data()
+	{
+	}
 	public Data(String act,String msg)
 	{
 		this.act = act;

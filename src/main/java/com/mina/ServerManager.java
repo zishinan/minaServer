@@ -82,7 +82,7 @@ public class ServerManager {
 		List<Smalldir> smalldirs = smalldirDao.listQuery(null, null, null, null);
 		Map<String, Object> maps = new HashMap<>();
 		maps.put("products", products);
-		maps.put("dir", dirs);
+		maps.put("dirs", dirs);
 		maps.put("smalldirs", smalldirs);
 		
 		String msg = JSON.toJSONString(maps);
@@ -91,6 +91,10 @@ public class ServerManager {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println(getLoginData());
+		String result = getLoginData().trim();
+		System.out.println(result);
+		Data data = JSON.parseObject(result, Data.class);
+		System.out.println(data.getAct());
+		System.out.println(data.getMsg());
 	}
 }

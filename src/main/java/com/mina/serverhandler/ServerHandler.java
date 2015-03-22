@@ -11,20 +11,25 @@ public class ServerHandler extends IoHandlerAdapter {
 	@Override
 	public void sessionCreated(IoSession session) throws Exception {
 		logger.info(session.getRemoteAddress().toString());
+		super.sessionCreated(session);
 	}
 	
 	@Override
 	public void messageReceived(IoSession session, Object message)
 			throws Exception {
+		logger.info("server received:"+message.toString());
 		String result = ServerManager.getServerResult(message.toString().trim());
 		
 		session.write(result);
+		logger.info("result is :"+ result);
+		super.messageReceived(session, message);
 	}
 	
 	@Override
 	public void messageSent(IoSession session, Object message) throws Exception {
-		String msg = message.toString().trim();
-		logger.info(msg);
+		super.messageSent(session, message);
+//		String msg = message.toString().trim();
+//		logger.info(msg);
 //		session.write("sent time:"+new Date().toString());
 	}
 }

@@ -36,7 +36,7 @@ public class ServerManager {
 			result = getShowBuyData(data.getMsg());
 			break;
 		case ActValue.CHANGE_PWD:
-			result = getChagePwdData(data.getMsg());
+			result = chagePwdData(data.getMsg());
 			break;
 		default:
 			break;
@@ -51,13 +51,19 @@ public class ServerManager {
 	}
 
 	private static String getShowBuyData(String msg) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-	private static String getChagePwdData(String msg) {
-		// TODO Auto-generated method stub
-		return null;
+	private static String chagePwdData(String msg) {
+		User user = JSON.parseObject(msg, User.class);
+		UserDao dao = new UserDaoImpl();
+		boolean flag = dao.update(user);
+		String result = "error";
+		if(flag){
+			result = "success";
+		}
+		
+		return result;
 	}
 
 	private static String getSiginData(String msg) {

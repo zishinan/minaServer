@@ -30,10 +30,10 @@ public class ServerManager {
 			result = getSiginData(data.getMsg());
 			break;
 		case ActValue.BUY:
-			result = getBuyData(data.getMsg());
+			result = buyData(data.getMsg());
 			break;
 		case ActValue.SHOW_BUY:
-			result = getShowBuyData(data.getMsg());
+			result = showBuyData(data.getMsg());
 			break;
 		case ActValue.CHANGE_PWD:
 			result = chagePwdData(data.getMsg());
@@ -45,12 +45,12 @@ public class ServerManager {
 	}
 
 	//user;product;
-	private static String getBuyData(String msg) {
+	private static String buyData(String msg) {
 		
 		return null;
 	}
 
-	private static String getShowBuyData(String msg) {
+	private static String showBuyData(String msg) {
 		return null;
 	}
 

@@ -6,14 +6,17 @@ import java.util.Map;
 
 import com.alibaba.fastjson.JSON;
 import com.dao.DirDao;
+import com.dao.OrderformDao;
 import com.dao.ProductDao;
 import com.dao.SmalldirDao;
 import com.dao.UserDao;
 import com.dao.impl.DirDaoImpl;
+import com.dao.impl.OrderformDaoImpl;
 import com.dao.impl.ProductDaoImpl;
 import com.dao.impl.SmalldirDaoImpl;
 import com.dao.impl.UserDaoImpl;
 import com.entity.Dir;
+import com.entity.Orderform;
 import com.entity.Product;
 import com.entity.Smalldir;
 import com.entity.User;
@@ -44,13 +47,20 @@ public class ServerManager {
 		return result;
 	}
 
-	//user;product;
 	private static String buyData(String msg) {
+		String result = "error";
+		Orderform orderform = JSON.parseObject(msg,Orderform.class);
+		OrderformDao dao = new OrderformDaoImpl();
+		boolean flag = dao.add(orderform);
+		if(flag){
+			result = "success";
+		}
 		
-		return null;
+		return result;
 	}
 
 	private static String showBuyData(String msg) {
+		
 		return null;
 	}
 
